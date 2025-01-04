@@ -1,6 +1,8 @@
 import {useRef, useState} from "react";
 import Button from "./Button.jsx";
 import {TiLocationArrow} from "react-icons/ti";
+import {useGSAP} from "@gsap/react";
+import gsap from "gsap";
 
 const Hero = () => {
     const [currentIndex, setCurrentIndex] = useState(1);
@@ -23,6 +25,27 @@ const Hero = () => {
     const handleVideoLoad= () => {
         setLoadedVideo((prev)=>prev + 1);
     }
+
+    useGSAP(()=>{
+        if (hasClicked) {
+            gsap.set('#next-video', {visibility: 'visible'});
+            gsap.to('#next-video', {
+               transformOrigin: 'center center',
+                scale: 1,
+                width: '100%',
+                height: '100%',
+                duration: 1,
+                ease: 'power1.inOut',
+                onStart: () => nextVideoRef.current.play(),
+            });
+            gsap.from('#current-video', {
+                transformOrigin: 'center center',
+                scale: 0,
+                duration: 1.5,
+                ease: 'power1.inOut',
+            })
+        }
+    }, {dependencies: [currentIndex], revertOnUpdate:true})
 
   return <div className={'relative h-dvh w-screen overflow-x-hidden'}>
       <div id={'video-frame'}
@@ -61,7 +84,7 @@ const Hero = () => {
                   onLoadedData={handleVideoLoad}
               />
           </div>
-          <h1 className={'special-font hero-heading absolute right-5 bottom-5 text-blue-75'}><b>Gaming</b></h1>
+          <h1 className={'special-font hero-heading absolute right-5 bottom-5 text-blue-75 z-50'}><b>Gaming</b></h1>
           <div className={'absolute left-0 top-0 z-40 size-full'}>
               <div className={'mt-24 px-5 sm:px-10'}>
                   <h2 className={'special-font hero-heading text-blue-100 '}>redefi<b>n</b>e</h2>
