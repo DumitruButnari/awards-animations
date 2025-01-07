@@ -5,8 +5,8 @@ import {useWindowScroll} from "react-use";
 import gsap from "gsap";
 
 export const NavBar = () => {
-    const [audioPlaying, setAudioPlaying] = useState(false);
-    const [isIndicatorActive, setIsIndicatorActive] = useState(false)
+    const [audioPlaying, setAudioPlaying] = useState(true);
+    const [isIndicatorActive, setIsIndicatorActive] = useState(true)
     const [lastScrollY, setLastScrollY] = useState(0)
     const [isNavVisible, setIsNavVisible] = useState(true)
 
@@ -16,7 +16,6 @@ export const NavBar = () => {
     const navItems = ['Nexus', 'Vault', 'Prologue', 'About Us', 'Contact Us'];
 
     const toggleAudioIndicator = () => {
-
         setAudioPlaying((prev)=>!prev);
         setIsIndicatorActive((prev)=>!prev);
     }
