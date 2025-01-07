@@ -1,6 +1,7 @@
 import Hero from "./sections/Hero.jsx";
 import AboutUs from "./sections/AboutUs.jsx";
 import {NavBar} from "./components/NavBar.jsx";
+import Features from "./sections/Features.jsx";
 
 const App = () => {
     return (
@@ -8,6 +9,7 @@ const App = () => {
             <NavBar />
             <Hero />
             <AboutUs />
+            <Features />
         </main>
     )
 }
