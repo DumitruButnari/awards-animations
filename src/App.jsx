@@ -2,6 +2,7 @@ import Hero from "./sections/Hero.jsx";
 import AboutUs from "./sections/AboutUs.jsx";
 import {NavBar} from "./components/NavBar.jsx";
 import Features from "./sections/Features.jsx";
+import Story from "./sections/Story.jsx";
 
 const App = () => {
     return (
@@ -10,6 +11,7 @@ const App = () => {
             <Hero />
             <AboutUs />
             <Features />
+            <Story />
         </main>
     )
 }
